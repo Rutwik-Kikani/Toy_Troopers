@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1060860030174",
+    "project_id": "toy-troopers-7f1a6",
+    "storage_bucket": "toy-troopers-7f1a6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1060860030174:android:79f6e7774dad65b570a64f",
+        "android_client_info": {
+          "package_name": "com.example.toytroopers"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCI1dueqfGIddSAvAzOquif4O2ScspMkCY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
