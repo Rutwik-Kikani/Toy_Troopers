@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.toytroopers.R;
+import com.example.toytroopers.activity.ProductDetailActivity;
 import com.example.toytroopers.activity.ProductListActivity;
 import com.example.toytroopers.databinding.ItemProductBinding;
 import com.example.toytroopers.model.Product;
@@ -65,7 +66,9 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         holder.binding.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(context, ProductDetailActivity.class);
+                intent.putExtra("productId", product.getProductId());
+                context.startActivity(intent);
             }
         });
     }

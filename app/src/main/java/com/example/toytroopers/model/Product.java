@@ -1,11 +1,14 @@
 package com.example.toytroopers.model;
 
+import java.util.Map;
+
 public class Product {
     private String productId;
     private String categoryId;
     private String name;
     private String description;
-    private String imageUrl;
+    private Map<String, String> images; // Assuming multiple images
+    private String imageUrl; // For product list
     private double price;
     private int stockQuantity;
 
@@ -18,6 +21,17 @@ public class Product {
         this.categoryId = categoryId;
         this.name = name;
         this.description = description;
+        this.imageUrl = imageUrl;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+    }
+
+    public Product(String productId, String categoryId, String name, String description, Map<String, String> images, String imageUrl, double price, int stockQuantity) {
+        this.productId = productId;
+        this.categoryId = categoryId;
+        this.name = name;
+        this.description = description;
+        this.images = images;
         this.imageUrl = imageUrl;
         this.price = price;
         this.stockQuantity = stockQuantity;
@@ -53,6 +67,14 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Map<String, String> getImages() {
+        return images;
+    }
+
+    public void setImages(Map<String, String> images) {
+        this.images = images;
     }
 
     public String getImageUrl() {
