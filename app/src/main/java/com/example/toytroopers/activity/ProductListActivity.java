@@ -43,7 +43,7 @@ public class ProductListActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setTitle("Product Details");
+            actionBar.setTitle(getIntent().getStringExtra("category"));
         }
 
         binding.recyclerViewProducts.setHasFixedSize(true);
