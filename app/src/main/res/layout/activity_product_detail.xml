@@ -46,10 +46,10 @@
         android:textStyle="bold"
         android:layout_marginBottom="16dp" />
 
-    <!--<androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewReviews"
+    <Button
+        android:id="@+id/buttonAddToCart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp" />-->
-
+        android:text="Add to Cart"
+        android:layout_marginTop="16dp" />
 </LinearLayout>

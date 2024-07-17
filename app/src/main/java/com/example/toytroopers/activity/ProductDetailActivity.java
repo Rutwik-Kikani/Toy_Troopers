@@ -22,6 +22,7 @@ import com.example.toytroopers.adapter.ImageSliderAdapter;
 import com.example.toytroopers.databinding.ActivityMainBinding;
 import com.example.toytroopers.databinding.ActivityProductDetailBinding;
 import com.example.toytroopers.databinding.ActivityProductListBinding;
+import com.example.toytroopers.model.CartDao;
 import com.example.toytroopers.model.Product;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -44,6 +45,8 @@ public class ProductDetailActivity extends AppCompatActivity {
     private List<String> imageUrls;
     //private List<Review> reviews;
     ActionBar actionBar;
+    private CartDao cartDao;
+    String image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,8 @@ public class ProductDetailActivity extends AppCompatActivity {
         binding = ActivityProductDetailBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        cartDao = new CartDao(this);
 
         Toolbar toolbar = binding.toolbar;
         setSupportActionBar(toolbar);
@@ -67,7 +72,29 @@ public class ProductDetailActivity extends AppCompatActivity {
         reviewsRef = database.getReference("reviews");
 
         fetchProductDetails();
-        //fetchProductReviews();
+
+        binding.buttonAddToCart.setOnClickListener (v -> {
+            String name = binding.textViewProductName.getText().toString();
+
+            double price = Double.parseDouble(binding.textViewProductPrice.getText().toString().replace("$", ""));
+
+            Log.v(":::",name);
+            Log.v(":::",price+"");
+            Log.v(":::",productId);
+            Log.v(":::",image);
+            long result = cartDao.addToCart(productId, name, price, 1,image);
+            if (result != -1) {
+                Toast.makeText(ProductDetailActivity.this, "Added to cart", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(ProductDetailActivity.this, "Failed to add to cart", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        cartDao.close();
     }
 
     private void fetchProductDetails() {
@@ -80,7 +107,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                     binding.textViewProductName.setText(product.getName());
                     binding.textViewProductDescription.setText(product.getDescription());
                     binding.textViewProductPrice.setText("$ " + product.getPrice());
-
+                    image = product.getImageUrl().toString();
                     imageUrls = new ArrayList<>(product.getImages().values());
                     imageSliderAdapter = new ImageSliderAdapter(ProductDetailActivity.this, imageUrls);
                     binding.viewPagerProductImages.setAdapter(imageSliderAdapter);
