@@ -22,11 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
-    // App icon set karvano
-    // logout uper badho shared pref clear karvanu
-    // user detail page implement
-    // product detail page redesign
-    // add fake data for product and category
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
