@@ -11,6 +11,7 @@ public class Product {
     private String imageUrl; // For product list
     private double price;
     private int stockQuantity;
+    private Map<String, Boolean> reviews; // New field for reviews
 
     public Product() {
         // Default constructor required for Firebase
@@ -24,9 +25,21 @@ public class Product {
         this.imageUrl = imageUrl;
         this.price = price;
         this.stockQuantity = stockQuantity;
+        this.reviews = reviews;
     }
 
-    public Product(String productId, String categoryId, String name, String description, Map<String, String> images, String imageUrl, double price, int stockQuantity) {
+    public Product(String productId, String categoryId, String name, String description, String imageUrl, double price, int stockQuantity, Map<String, Boolean> reviews) {
+        this.productId = productId;
+        this.categoryId = categoryId;
+        this.name = name;
+        this.description = description;
+        this.imageUrl = imageUrl;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+        this.reviews = reviews;
+    }
+
+    public Product(String productId, String categoryId, String name, String description, Map<String, String> images, String imageUrl, double price, int stockQuantity, Map<String, Boolean> reviews) {
         this.productId = productId;
         this.categoryId = categoryId;
         this.name = name;
@@ -35,7 +48,10 @@ public class Product {
         this.imageUrl = imageUrl;
         this.price = price;
         this.stockQuantity = stockQuantity;
+        this.reviews = reviews;
     }
+
+    // Getters and setters
 
     public String getProductId() {
         return productId;
@@ -99,5 +115,13 @@ public class Product {
 
     public void setStockQuantity(int stockQuantity) {
         this.stockQuantity = stockQuantity;
+    }
+
+    public Map<String, Boolean> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(Map<String, Boolean> reviews) {
+        this.reviews = reviews;
     }
 }

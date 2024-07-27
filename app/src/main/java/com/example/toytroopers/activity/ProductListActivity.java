@@ -71,8 +71,13 @@ public class ProductListActivity extends AppCompatActivity {
                     String name = (String) productSnapshot.child("name").getValue();
                     String description = (String) productSnapshot.child("description").getValue();
                     String imageUrl = (String) productSnapshot.child("imageUrl").getValue();
-                    double price = (double) productSnapshot.child("price").getValue();
-                    int stockQuantity = (int) (long) productSnapshot.child("stockQuantity").getValue();
+                    double price = 0.0;
+                    if (productSnapshot.child("price").getValue() instanceof Long) {
+                        price = ((Long) productSnapshot.child("price").getValue()).doubleValue();
+                    } else {
+                        price = (double) productSnapshot.child("price").getValue();
+                    }
+                    int stockQuantity = ((Long) productSnapshot.child("stockQuantity").getValue()).intValue();
 
                     Product product = new Product(productId, categoryId, name, description, imageUrl, price, stockQuantity);
                     productList.add(product);

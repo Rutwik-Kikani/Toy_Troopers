@@ -15,15 +15,18 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.toytroopers.R;
 import com.example.toytroopers.adapter.ImageSliderAdapter;
+import com.example.toytroopers.adapter.ReviewAdapter;
 import com.example.toytroopers.databinding.ActivityMainBinding;
 import com.example.toytroopers.databinding.ActivityProductDetailBinding;
 import com.example.toytroopers.databinding.ActivityProductListBinding;
 import com.example.toytroopers.model.CartDao;
 import com.example.toytroopers.model.Product;
+import com.example.toytroopers.model.Review;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,12 +44,13 @@ public class ProductDetailActivity extends AppCompatActivity {
     private DatabaseReference reviewsRef;
     private String productId;
     private ImageSliderAdapter imageSliderAdapter;
-    //private ReviewAdapter reviewAdapter;
+    private ReviewAdapter reviewAdapter;
     private List<String> imageUrls;
-    //private List<Review> reviews;
+    private List<Review> reviews;
     ActionBar actionBar;
     private CartDao cartDao;
     String image;
+    private int quantity = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,10 +88,20 @@ public class ProductDetailActivity extends AppCompatActivity {
             Log.v(":::",image);
             long result = cartDao.addToCart(productId, name, price, 1,image);
             if (result != -1) {
+                binding.buttonAddToCart.setEnabled(false);
+                binding.buttonAddToCart.setText("Added to Cart");
                 Toast.makeText(ProductDetailActivity.this, "Added to cart", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(ProductDetailActivity.this, "Failed to add to cart", Toast.LENGTH_SHORT).show();
             }
+        });
+
+        binding.buttonIncreaseQuantity.setOnClickListener(v -> {
+            increaseQuantity();
+        });
+
+        binding.buttonDecreaseQuantity.setOnClickListener(v -> {
+            decreaseQuantity();
         });
     }
 
@@ -95,6 +109,18 @@ public class ProductDetailActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         cartDao.close();
+    }
+
+    private void increaseQuantity() {
+        quantity++;
+        binding.textViewQuantity.setText(String.valueOf(quantity));
+    }
+
+    private void decreaseQuantity() {
+        if (quantity > 1) {
+            quantity--;
+            binding.textViewQuantity.setText(String.valueOf(quantity));
+        }
     }
 
     private void fetchProductDetails() {
@@ -117,7 +143,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                         actionBar.setTitle(product.getName());
                     }
 
-                    //fetchReviews(product);
+                    fetchReviews(product);
                 }
             }
 
@@ -137,7 +163,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /*private void fetchReviews(Product product) {
+    private void fetchReviews(Product product) {
         reviews = new ArrayList<>();
         for (String reviewId : product.getReviews().keySet()) {
             reviewsRef.child(reviewId).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -157,8 +183,8 @@ public class ProductDetailActivity extends AppCompatActivity {
             });
         }
 
-        reviewAdapter = new ReviewAdapter(ProductDetailsActivity.this, reviews);
-        binding.recyclerViewReviews.setLayoutManager(new LinearLayoutManager(ProductDetailsActivity.this));
+        reviewAdapter = new ReviewAdapter(ProductDetailActivity.this, reviews);
+        binding.recyclerViewReviews.setLayoutManager(new LinearLayoutManager(ProductDetailActivity.this));
         binding.recyclerViewReviews.setAdapter(reviewAdapter);
-    }*/
+    }
 }
