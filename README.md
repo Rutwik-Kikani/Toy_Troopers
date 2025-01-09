@@ -15,22 +15,23 @@ The **Toy Troopers Client Mobile Application** is a feature-rich Android app tha
 
 ## Screenshots
 ### Login and Signup
-![Login Screen](./screenshots/Screenshot_20250109_175326.png)
-![Signup Screen](./screenshots/Screenshot_20250109_175329.png)
+<img src="./screenshots/Screenshot_20250109_175634.png" alt="Login Screen" width="300" height="600">
+<img src="./screenshots/Screenshot_20250109_175643.png" alt="SignUp Screen" width="300" height="600">
 
 ### Home and Categories
-![Home Screen](./screenshots/Screenshot_20250109_175411.png)
-![Categories](./screenshots/Screenshot_20250109_175429.png)
+<img src="./screenshots/Screenshot_20250109_175429.png" alt="Home Screen" width="300" height="600">
+<img src="./screenshots/Screenshot_20250109_175326.png" alt="Categories" width="300" height="600">
 
 ### Product List and Details
-![Product List](./screenshots/Screenshot_20250109_175442.png)
-![Product Details](./screenshots/Screenshot_20250109_175634.png)
+<img src="./screenshots/Screenshot_20250109_175442.png" alt="Product List" width="300" height="600">
+<img src="./screenshots/Screenshot_20250109_175411.png" alt="Product Details" width="300" height="600">
+<img src="./screenshots/Screenshot_20250109_175329.png" alt="Firebase Database" width="300" height="600">
 
 ---
 
 ## Demo Video
 Click below to watch a short demo:
-[![Demo Video](./screenshots/demo_thumbnail.png)](./demo/Screen_recording_20250109_180857.webm)
+![Demo Video](./mutedemo/Screen_recording_20250109_180857.webm)
 
 ---
 
@@ -84,7 +85,7 @@ Rutwik-Kikani-Toy_Troopers/
 ---
 
 ## Contributors
-- **Rutwik Kikani** ([GitHub](https://github.com/username))
+- **Rutwik Kikani** ([GitHub](https://github.com/Rutwik-Kikani))
 
 ---
 
