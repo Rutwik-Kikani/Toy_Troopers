@@ -25,13 +25,15 @@ The **Toy Troopers Client Mobile Application** is a feature-rich Android app tha
 ### Product List and Details
 <img src="./screenshots/Screenshot_20250109_175442.png" alt="Product List" width="300" height="600">
 <img src="./screenshots/Screenshot_20250109_175411.png" alt="Product Details" width="300" height="600">
-<img src="./screenshots/Screenshot_20250109_175329.png" alt="Firebase Database" width="300" height="600">
+<img src="./screenshots/Screenshot_20250109_175329.png" alt="Firebase Database">
 
 ---
 
 ## Demo Video
 Click below to watch a short demo:
-![Demo Video](./mutedemo/Screen_recording_20250109_180857.webm)
+<video src="./mutedemo/Screen_recording_20250109_180857.webm" controls="controls" width="640" height="360">
+  Your browser does not support the video tag.
+</video>
 
 ---
 
