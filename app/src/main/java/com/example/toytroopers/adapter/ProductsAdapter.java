@@ -1,8 +1,10 @@
 package com.example.toytroopers.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -11,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.toytroopers.R;
+import com.example.toytroopers.activity.ProductDetailActivity;
+import com.example.toytroopers.activity.ProductListActivity;
 import com.example.toytroopers.databinding.ItemProductBinding;
 import com.example.toytroopers.model.Product;
 import com.squareup.picasso.Picasso;
@@ -58,6 +62,15 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
                         .centerCrop())
                 .into(holder.binding.imageViewProduct);
 //        .placeholder(R.drawable.placeholder_image)
+
+        holder.binding.rootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ProductDetailActivity.class);
+                intent.putExtra("productId", product.getProductId());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

@@ -67,6 +67,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
                 // Start new activity here, passing necessary data if needed
                 Intent intent = new Intent(context, ProductListActivity.class);
                 intent.putExtra("categoryId", category.getCategoryId()); // Pass category ID or other data
+                intent.putExtra("category", category.getCategoryName());
                 context.startActivity(intent);
             }
         });
