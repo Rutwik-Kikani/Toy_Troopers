@@ -31,9 +31,8 @@ The **Toy Troopers Client Mobile Application** is a feature-rich Android app tha
 
 ## Demo Video
 Click below to watch a short demo:
-<video src="./mutedemo/Screen_recording_20250109_180857.mp4" controls="controls">
-  Your browser does not support the video tag.
-</video>
+## Demo Video
+[Watch the Demo Video](./mutedemo/ezyZip.mp4)
 
 ---
 
